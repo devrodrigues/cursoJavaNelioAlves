@@ -10,7 +10,7 @@ public class main {
 		Locale.setDefault(Locale.US);
 		Scanner src = new Scanner(System.in);
 		
-		Conta cliente = new Conta();
+		Conta cliente;
 				
 		System.out.printf("Enter account number: ");
 		int numeroConta = src.nextInt();
@@ -21,35 +21,33 @@ public class main {
 		String nomeCliente = src.nextLine();
 		
 		System.out.printf("Is there na initial deposit (y/n)? ");
-		String depositoInicial = src.nextLine();
+		char resposta = src.next().charAt(0);
 				
-		if (depositoInicial.equals("y")) {
+		if (resposta == 'y') {
 			System.out.printf("Enter initial deposit value: ");
-			double valorDeposito = src.nextDouble();
+			double depositoInicial = src.nextDouble();
 			
-			cliente = new Conta(numeroConta, nomeCliente, valorDeposito);
-			
-			System.out.println("\nAccount data: ");
-			System.out.println(cliente);
+			cliente = new Conta(numeroConta, nomeCliente, depositoInicial);
 			
 			
 		} else {
 			cliente = new Conta(numeroConta, nomeCliente);
 			
-			System.out.println("\nAccount data: ");
-			System.out.println(cliente);
-
 		}
+		
+		System.out.println("\nAccount data: ");
+		System.out.println(cliente);
+		
 		
 		System.out.printf("\nEnter a deposit value: ");
 		double deposito = src.nextDouble();
-		cliente.Deposito(deposito);
+		cliente.deposito(deposito);
 		System.out.println("Updated account data:");
 		System.out.println(cliente);
 		
 		System.out.println("\nEnter a withdraw value: ");
 		double saque = src.nextDouble();
-		cliente.Saque(saque);
+		cliente.saque(saque);
 		System.out.println("Updated account data:");
 		System.out.println(cliente);
 		
